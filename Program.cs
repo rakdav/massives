@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿
+using System.ComponentModel;
 
 Console.Write("Введите размер массива:");
 int n = int.Parse(Console.ReadLine()!);
@@ -10,6 +11,8 @@ for (int i = 0; i < mas.Length; i++)
     Console.Write(mas[i] + " ");
 }
 Console.WriteLine();
+//Случайная сортировка
+
 //метод пузырька
 //for (int i = 0; i < mas.Length-1; i++)
 //{
@@ -23,6 +26,33 @@ Console.WriteLine();
 //        }
 //    }
 //}
+
+//Шейкерная сортировка
+for(int i=0;i<mas.Length/2;i++)
+{
+    bool swapFlag = false;
+    for(int j=i;j<mas.Length-i-1;j++)
+    {
+        if(mas[j]>mas[j+1])
+        {
+            int temp = mas[j];
+            mas[j] = mas[j+1];
+            mas[j+1] = temp;
+            swapFlag = true;
+        }
+    }
+    for(int j=mas.Length-2-i;j>i;j--)
+    {
+        if (mas[j - 1] > mas[j])
+        {
+            int temp = mas[j-1];
+            mas[j-1] = mas[j];
+            mas[j] = temp;
+            swapFlag = true;
+        }
+    }
+    if (!swapFlag) break;
+}
 //сортировка выбором
 //for (int i = 0; i < mas.Length - 1; i++)
 //{
@@ -56,23 +86,29 @@ Console.WriteLine();
 //        Console.WriteLine();
 //    }
 //}
+
 //простые вставками с барьером
-for(int i=1;i<mas.Length;i++)
-{
-    if (mas[i - 1] > mas[i])
-    {
-        int x = mas[i];
-        int j = i - 1;
-        while (j >= 0 && mas[j]>x)
-        {
-            mas[j + 1] = mas[j];
-            j = j - 1;
-        }
-        mas[j + 1] = x;
-    }
-}
+//for (int i = 1; i < mas.Length; i++)
+//{
+//    if (mas[i - 1] > mas[i])
+//    {
+//        int x = mas[i];
+//        int j = i - 1;
+//        while (j >= 0 && mas[j] > x)
+//        {
+//            mas[j + 1] = mas[j];
+//            j = j - 1;
+//        }
+//        mas[j + 1] = x;
+//    }
+//}
+
 foreach (int i in mas)
 {
     Console.Write(i + " ");
 }
 Console.WriteLine();
+
+
+
+
