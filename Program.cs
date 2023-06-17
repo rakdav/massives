@@ -28,31 +28,31 @@ Console.WriteLine();
 //}
 
 //Шейкерная сортировка
-for(int i=0;i<mas.Length/2;i++)
-{
-    bool swapFlag = false;
-    for(int j=i;j<mas.Length-i-1;j++)
-    {
-        if(mas[j]>mas[j+1])
-        {
-            int temp = mas[j];
-            mas[j] = mas[j+1];
-            mas[j+1] = temp;
-            swapFlag = true;
-        }
-    }
-    for(int j=mas.Length-2-i;j>i;j--)
-    {
-        if (mas[j - 1] > mas[j])
-        {
-            int temp = mas[j-1];
-            mas[j-1] = mas[j];
-            mas[j] = temp;
-            swapFlag = true;
-        }
-    }
-    if (!swapFlag) break;
-}
+//for(int i=0;i<mas.Length/2;i++)
+//{
+//    bool swapFlag = false;
+//    for(int j=i;j<mas.Length-i-1;j++)
+//    {
+//        if(mas[j]>mas[j+1])
+//        {
+//            int temp = mas[j];
+//            mas[j] = mas[j+1];
+//            mas[j+1] = temp;
+//            swapFlag = true;
+//        }
+//    }
+//    for(int j=mas.Length-2-i;j>i;j--)
+//    {
+//        if (mas[j - 1] > mas[j])
+//        {
+//            int temp = mas[j-1];
+//            mas[j-1] = mas[j];
+//            mas[j] = temp;
+//            swapFlag = true;
+//        }
+//    }
+//    if (!swapFlag) break;
+//}
 //сортировка выбором
 //for (int i = 0; i < mas.Length - 1; i++)
 //{
@@ -102,7 +102,23 @@ for(int i=0;i<mas.Length/2;i++)
 //        mas[j + 1] = x;
 //    }
 //}
-
+//Сортировка Шеллла
+int d = mas.Length / 2;
+while(d>=1)
+{
+    for(int i = d; i < mas.Length; i++)
+    {
+        int j = i;
+        while ((j >= d) && (mas[j - d] > mas[j]))
+        {
+            int temp = mas[j];
+            mas[j]=mas[j-d];
+            mas[j-d] = temp;
+            j = j - d;
+        }
+    }
+    d = d / 2;
+}
 foreach (int i in mas)
 {
     Console.Write(i + " ");
